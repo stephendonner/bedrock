@@ -1,0 +1,673 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
+@import '../sandstone/lib.less';
+
+// The main body is indented one column on each side
+@oneColumn: @gridColumnWidth + @gridGutterWidth;
+
+@twoColumns: (@gridColumnWidth * 2) + @gridGutterWidth;
+
+// A three-column space forms a sidebar
+@threeColumns: (@gridColumnWidth * 3) + (@gridGutterWidth * 2);
+
+
+
+// Define colors for each theme
+@theme-surveillance: #606ca2;
+@theme-surveillance-dark: darken(@theme-surveillance, 20%);
+@theme-surveillance-light: lighten(@theme-surveillance, 40%);
+
+@theme-security: #5f8ac9;
+@theme-security-dark: darken(@theme-security, 20%);
+@theme-security-light: lighten(@theme-security, 20%);
+
+@theme-tracking: #aa41a4;
+@theme-tracking-dark: darken(@theme-tracking, 20%);
+@theme-tracking-light: lighten(@theme-tracking, 20%);
+
+// Apply theme colors to elements
+.theme-color(@color) {
+    .@{color} {
+        .masthead { background-color: ~'@{@{color}-dark}'; }
+        .smarton-header { background-color: ~'@{@{color}}'; }
+        .big-list > li:before { background-color: ~'@{@{color}}'; }
+        .callout { border-color: ~'@{@{color}-light}'; color: ~'@{@{color}-dark}'; }
+        .pullquote { color: ~'@{@{color}-dark}'; }
+        .main .section {
+            a:link, a:visited, a:hover { color: ~'@{@{color}}'; }
+        }
+        .footer-cta { background-color: ~'@{@{color}-dark}'; }
+        .footer-cta .button { color: ~'@{@{color}}'; }
+        .tip-list > li:before { color: ~'@{@{color}}'; }
+        .pullchart .number { border-color: ~'@{@{color}-light}'; }
+        .big-list .button-flat { background-color: ~'@{@{color}-light}'; color: ~'@{@{color}-dark}' !important; }
+        .video iframe { border-color: ~'@{@{color}-light}'; }
+    }
+}
+
+// Define body classes for the mixin
+.theme-color(~"theme-surveillance");
+.theme-color(~"theme-security");
+.theme-color(~"theme-tracking");
+
+
+
+.columns {
+    list-style: none;
+    .flexbox;
+
+    .col {
+        margin: 0 10px @baseLine;
+        .border-box;
+
+        ul {
+            list-style: disc;
+            margin: 0 0 1em;
+        }
+    }
+
+    &.with-graphic {
+        .span(8);
+        margin-left: -@gridGutterWidth/2;
+    }
+}
+
+.columns-2 .col { width: 50%; }
+.columns-3 .col { width: 33.3%; }
+.columns-4 .col { width: 25%; }
+.columns-5 .col { width: 20%; }
+
+
+// Override sandstone defaults
+#outer-wrapper {
+    background: #fff;
+}
+
+#wrapper {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+#tabzilla {
+    position: absolute;
+    right: 20px;
+    top: 0;
+}
+
+#colophon {
+    background: #ccc;
+    margin: 0;
+
+    .logo a {
+        .at2x('/media/img/sandstone/footer-mozilla-dark.png', 93px, 24px);
+    }
+}
+
+// Blocks
+.section {
+    .clearfix;
+    margin: 0 auto;
+    position: relative;
+}
+
+.section:focus,
+.section:target {
+    outline: 0;
+}
+
+.content {
+    .border-box;
+    .clearfix;
+    margin: 0 auto;
+    padding: @baseLine @gridGutterWidth;
+    position: relative;
+    width: @widthDesktop;
+
+    @media only screen and (max-width: @breakDesktop) {
+        width: @widthTablet;
+    }
+
+    @media only screen and (max-width: @breakTablet) {
+        width: @widthMobile;
+    }
+
+    @media only screen and (min-width: @breakMobileLandscape) and (max-width: @breakTablet) {
+        width: @widthMobileLandscape;
+    }
+}
+
+.main .section {
+    .font-size(@largeFontSize);
+    color: #444;
+
+    .content {
+        padding: @baseLine (@threeColumns + 30px) @baseLine (@oneColumn + 30px);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #333;
+        font-style: italic;
+    }
+
+    h3 {
+        .open-sans;
+        .font-size(26px);
+    }
+
+    h4 {
+        .open-sans;
+        .font-size(20px);
+    }
+}
+
+a.go {
+    .trailing-arrow;
+}
+
+.section-title {
+    .font-size(36px);
+    padding-top: @baseLine * 2;
+    margin: 0 -@threeColumns .5em -@oneColumn;
+}
+
+.section-intro {
+    .font-size(18px);
+    font-style: italic;
+    margin: 0 -@threeColumns @baseLine*4 -@oneColumn;
+}
+
+
+// Landing page topics
+.smarton-topics {
+    list-style: none;
+    margin: 2em 10px;
+    padding: 0 @oneColumn;
+    text-align: center;
+    .clearfix;
+
+    > li {
+        .span(3);
+        .border-box;
+        padding: 20px;
+        background: rgba(0,0,0,.1);
+    }
+
+    h2, h3, a {
+        color: #fff;
+        text-shadow: none;
+    }
+
+    .topic-tracking {
+        background: @theme-tracking;
+    }
+
+    .topic-security {
+        background: @theme-security;
+    }
+
+    .topic-surveillance {
+        background: @theme-surveillance;
+    }
+
+}
+
+
+.feature {
+    background: rgba(0,0,0,.1);
+    padding: 20px;
+
+    .smarton-steps {
+        list-style: none;
+        margin: 0;
+
+        li {
+            display: inline-block;
+            margin: 0;
+
+            &:after {
+                content: ' >';
+            }
+
+            &:last-child:after {
+                content: '';
+            }
+        }
+    }
+}
+
+// Series header
+.masthead {
+    text-align: center;
+    background: @mozIDGrey;
+    color: #fff;
+
+    .content {
+        padding-top: 40px;
+    }
+
+    .series-title {
+        font-style: italic;
+        .font-size(54px);
+
+        b {
+            .open-sans;
+        }
+    }
+
+    .series-intro {
+        .font-size(16px);
+        margin: 0 @oneColumn 1em;
+        color: rgba(255, 255, 255, .8);
+    }
+
+    .series-link a {
+        .trailing-arrow();
+    }
+
+    a {
+        color: #fff;
+        text-shadow: none;
+    }
+}
+
+// This is a hack.
+// Todo: Make the template smarter.
+.landing .series-link {
+    display: none;
+}
+
+// Page header
+.smarton-header {
+    background: #ccc;
+    .clearfix();
+
+    .content {
+        padding: 40px @gridGutterWidth @baseLine;
+    }
+
+    .series-title {
+        display: none;
+        .span(6);
+        margin: -2em 10px -.25em;
+        padding-left: 5px;
+        .font-size(@largeFontSize);
+        font-style: italic;
+
+        a {
+            color: rgba(255, 255, 255, .8);
+            position: relative;
+            left: -15px;
+            padding-left: 17px;
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: #fff;
+
+                &:before {
+                    opacity: 1;
+                    left: -3px;
+                }
+            }
+
+            &:before {
+                content: '« ';
+                text-align: center;
+                width: 15px;
+                position: absolute;
+                left: 4px;
+                opacity: 0;
+                transition: all .2s ease;
+            }
+        }
+    }
+
+    .smarton-title {
+        .font-size(40px);
+        .span(6);
+        color: #fff;
+        font-style: italic;
+        line-height: 1;
+        margin-bottom: 0;
+        text-shadow: none;
+    }
+
+    #head-share {
+        background: transparent;
+        position: absolute;
+        top: 6px;
+        right: 0;
+
+        h3,
+        ul li a {
+            text-transform: none;
+            font-style: normal;
+            color: #fff;
+        }
+
+        h3 {
+            .font-size(@largeFontSize);
+        }
+    }
+
+    &.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        z-index: 99;
+        box-shadow: 0 0 5px rgba(0, 0, 0, .25);
+
+        .series-title {
+            display: block;
+        }
+    }
+}
+
+// Navbar
+.nav-steps {
+    .font-size(16px);
+    line-height: 1;
+    width: (@gridColumnWidth * 6) + (@gridGutterWidth * 5);
+    position: absolute;
+    right: 30px;
+    bottom: 0;
+
+    ol {
+        margin: 0;
+        .flexbox;
+    }
+
+    li {
+        width: 25%;
+        list-style: none;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        position: relative;
+
+        &.current a {
+            color: #fff;
+            border-bottom: 5px solid rgba(255, 255, 255, .8);
+            padding-bottom: 20px;
+        }
+    }
+
+    a {
+        .border-box();
+        width: 100%;
+        display: block;
+        padding: 10px 10px 24px;
+        transition: border-width .1s ease, padding-bottom .1s ease;
+
+        &:link,
+        &:visited {
+            color: #fff;
+            color: rgba(255, 255, 255, .8);
+            border-bottom: 1px solid transparent;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            text-decoration: none;
+            color: #fff;
+            border-bottom: 5px solid #fff;
+            padding-bottom: 20px;
+        }
+    }
+}
+
+
+
+// Callouts
+.callout {
+    width: (@gridColumnWidth * 3);
+    float: right;
+    clear: right;
+    border: 1px solid #ccc;
+    margin: 0 -(@threeColumns + 30px) 1em 0;
+    padding: @baseLine @gridGutterWidth;
+    border-radius: 6px;
+    .font-size(@largeFontSize);
+    font-style: italic;
+    text-align: center;
+
+    section,
+    blockquote {
+        border-bottom: 1px dotted @borderColor;
+        margin-bottom: @baseLine;
+    }
+
+    section:last-child,
+    blockquote:last-child {
+        border: 0;
+        margin-bottom: 0;
+    }
+
+    // Pull quotes
+    .quote {
+        position: relative;
+        font-style: italic;
+        margin-bottom: .5em;
+        .open-sans-light();
+        .font-size(20px);
+    }
+
+    .attribute {
+        color: rgba(0, 0, 0, .5);
+    }
+
+    // Charts
+    .chart {
+        .font-size(@baseFontSize);
+        font-style: normal;
+        color: #444;
+
+        .number {
+            display: block;
+            margin: 0 auto @baseLine/2 auto;
+            height: 140px;
+            width: 140px;
+            line-height: 140px;
+            letter-spacing: -0.02em;
+            text-align: center;
+            border: 10px solid #ccc;
+            border-radius: 100%;
+            .open-sans-light;
+            .font-size(62px);
+
+            sup {
+                .font-size(24px);
+            }
+        }
+
+        cite {
+            display: block;
+            color: @textColorLight;
+            font-style: italic;
+            .font-size(14px);
+        }
+    }
+}
+
+
+// Videos
+.video {
+    margin: 0 -@twoColumns (@baseLine * 3) 0;
+    text-align: center;
+
+    iframe {
+        width: 100%;
+        border: 10px solid #eee;
+        border-radius: 3px;
+    }
+
+    figcaption {
+        font-style: italic;
+        text-align: center;
+        margin: .5em 0 1.5em;
+    }
+}
+
+
+// Section hero images
+.block-hero {
+    max-width: @threeColumns;
+    float: right;
+    clear: right;
+    margin: @baseLine -(@threeColumns + 10px) @baseLine 0;
+    border-radius: 100%;
+    background: #ddd;
+}
+
+// Tips
+.tip {
+    margin: @baseLine*2 0;
+
+    &.with-graphic {
+        padding-left: 120px;
+        min-height: 96px;
+
+        .graphic {
+            float: left;
+            margin-left: -120px;
+            border-radius: 100%;
+            width: 96px;
+            height: 96px;
+            background: #ddd;
+        }
+    }
+
+    & + h3 {
+        margin-top: @baseLine * 3;
+    }
+}
+
+
+// Big numbered lists
+.big-list {
+    margin: (@baseLine * 2) auto;
+    padding: 0;
+
+    > li {
+        position: relative;
+        counter-increment: steps;
+        list-style-type: none;
+        margin: 0 0 @baseLine*2 0;
+        padding: @baseLine/2 @gridGutterWidth 0 80px;
+        min-height: 60px;
+        .font-size(@largeFontSize);
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        &:before {
+            content: counter(steps);
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            height: 60px;
+            width: 60px;
+            margin: 0 auto;
+            line-height: 60px;
+            border-radius: 30px;
+            text-align: center;
+            background: gray;
+            color: #fff;
+            .font-size(42px);
+            .open-sans-light();
+        }
+    }
+
+    .button-flat {
+        display: block;
+        padding: .25em 15px;
+        margin-top: .5em;
+        .font-size(12px);
+    }
+}
+
+// Footer bar, shows either newsletter signup or Firefox download
+.footer-cta {
+    background: @mozIDGrey;
+    margin: 0;
+    color: #fff;
+
+    h3, h4 {
+        color: rgba(255, 255, 255, .8);
+        text-shadow: none;
+        margin: 0 0 .25em;
+    }
+
+    h4 {
+        .font-size(18px);
+    }
+
+    .billboard {
+        padding: 0;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+    }
+
+    input[type='email'] {
+        .font-size(@largeFontSize);
+        padding: .25em 15px;
+    }
+
+    .button {
+        background: rgba(255, 255, 255, .8);
+        box-shadow: none;
+        color: @linkBlue;
+        font-weight: normal;
+        text-shadow: none;
+        .font-size(@largeFontSize);
+    }
+
+    a {
+        color: #fff;
+    }
+
+    &.fixed {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        z-index: 99;
+        box-shadow: 0 0 5px rgba(0,0,0,.1);
+    }
+}
+
+.foot-download {
+    display: none;
+
+    .title,
+    .download-button,
+    .tagline {
+        .span(4);
+    }
+
+    .title {
+        margin-top: .5em;
+    }
+
+    .tagline {
+        .open-sans-light();
+        .font-size(18px);
+        margin-top: 1em;
+    }
+}
+

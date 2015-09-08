@@ -1,0 +1,193 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% extends "teach/smarton/base.html" %}
+
+{% block page_title %}{{ _('Get smart on tracking') }}{% endblock %}
+{% block page_desc %}{{ _('Get smart on tracking') }}{% endblock %}
+{% block body_id %}smarton-tracking{% endblock %}
+{% block body_class %}smarton theme-tracking{% endblock %}
+
+{% block smarton_content %}
+<article class="main">
+
+  {{ smarton_navbar('Tracking', _('Get smart on tracking'), 'https://mzl.la/foo') }}
+
+  <section id="ask" class="section section-ask">
+    <div class="content">
+
+      <h2 class="section-title">Ask</h2>
+
+      <p class="section-intro">
+        Lorem ipsum dolor sit amet.
+      </p>
+
+      <ol class="big-list">
+        <li>Have you already wondered why some ads seem to be following you?</li>
+        <li>Do you feel in control of your personal information online?</li>
+        <li>Do you wonder what companies with the personal information they collect about you?</li>
+        <li>Do you know what a cookie is online?</li>
+      </ol>
+
+    </div>
+  </section>
+
+  <section id="know" class="section section-know">
+    <div class="content">
+
+      <h2 class="section-title">What is Tracking?</h2>
+
+      <p class="section-intro">
+        While the Internet provides countless ways for us to share and connect, it can also open our personal information to others.
+        It's like bread crumbs we leave behind us, that can be picked up to reconstruct our whereabouts, our preferences, our identity.
+        Understanding the traces we leave behind on the Web is the biggest step to being able to take better control of it.
+      </p>
+
+      <p>
+        The first episode of Do Not Track documentary series by Brett Gaylor provides great background on this:
+      </p>
+
+      <figure class="video">
+        <iframe src="https://episode1.donottrack-doc.com/" style="width:780px;height:460px;margin:0 auto;">
+          <p><a href="https://donottrack-doc.com/">Watch the documentary at donottrack-doc.com.</a></p>
+        </iframe>
+      </figure>
+
+      <h3>Free content isn’t really free</h3>
+      <p>
+        Everyone enjoys a lot of “free” content online.
+        But free is rarely *really* free, if you are not paying, then it is likely someone is paying to get your attention.
+        This has become the dominant business model on the internet.
+        Like it or not, but it pays for all the content we enjoy and helps content creators/publishers make a living.
+      </p>
+
+      <h3>The quest for personalization...</h3>
+      <p>
+        The websites we visit collect some information about us to personalize our experience (sessions, web analytics).
+        They do this primarily using cookies.
+      </p>
+
+      <h4>Cookies</h4>
+      <p>These are files placed on our computer to store information about our preferences. That’s usually a good thing - we all prefer when a site we visit doesn’t ask us to sign in every time and remembers which language we speak or what’s in our shopping cart.</p>
+
+      <p>DISCLAIMER: Mozilla uses third party tools to improve users’ experiences on mozilla.org. For more info see our Website Privacy Notice.</p>
+
+      <h4>The rise of trackers</h4>
+      <p>
+        What is not ok is that cookies and other related techniques are also used by third-parties to collect information about our browsing habits behind our back, without our consent, outside of our control.
+        Our browsing information is then collected across multiple sites and  put together in an online profile.
+        This information is then used or sold to personalize ads presented to us. This is also why some ads sometimes follow you around.
+      </p>
+
+      <aside class="callout">
+        <section class="chart">
+          <p>
+            <span class="number">76<sup>%</sup></span>
+            of adults say they are “not too confident” or “not at all confident” that records of their activity maintained by the online advertisers who place ads on the websites they visit will remain private and secure.
+            <cite>(Pew Internet Center, May 2015)</cite>
+          </p>
+        </section>
+      </aside>
+
+      <h4>The chilling excesses of profiling</h4>
+      <p>
+        But it can also go further...
+        When this information can also be combined with offline data by data miner and used to build extremely detailed profiles about you.
+        Some of the real, demonstrated harms of detailed profiling include:
+      </p>
+
+      <ul>
+        <li>Heightened exposure from data breaches</li>
+        <li>Lowered credit scores and credit limits</li>
+        <li>Price discrimination</li>
+        <li>Denial of insurance coverage, or more expensive coverage</li>
+        <li>Lost job opportunities</li>
+      </ul>
+
+      <h4>Offering Internet users a choice</h4>
+      <p>[section talking about how there has been a movement to offer a meaningful opportunity to choose not to receive the personalization behavior]</p>
+
+      <p>
+        In 2011, Do Not Track (DNT), an optional browser feature that signals advertisers to not track the user's Web activity was introduced by Mozilla in Firefox.
+        While the DNT signal was eventually adopted by most major browsers, there is no consensus interpretation of what a company should do when it detects it, causing many Web publishers and advertisers to ignoring it.
+        The W3C working group - an international working group of policy advocates, technical experts, and companies - is still attempting to create a universally=agreed upon standard.
+      </p>
+
+    </div>
+  </section>
+
+  <section id="do" class="section section-do">
+    <div class="content">
+
+      <h2 class="section-title">Do</h2>
+
+      <p class="section-intro">
+        Lorem ipsum dolor sit amet.
+      </p>
+
+      <h3>Understand the hidden cost of “free”</h3>
+      <p>
+        We all like the appeal of "free" apps, online services but if you’re not paying for it, there are chance your information may be collected and monetized.
+        Check whether the information you share is worth the service you are receiving.
+      </p>
+
+      <h3>Observe your own tracking graph with Lightbeam</h3>
+      <p>
+        Be sure to check out Lightbeam is a simple and insightful add-on (works with Firefox) that reveals the full depth of the Web today, including parts that are not transparent to the average user.
+      </p>
+
+      <h3>Be aware of passive collection</h3>
+      <p>
+        Understand that when you see an element on a page like a Facebook login button or a thumbs up, some information has been collected about you - and clicking on it will share more information.
+      </p>
+
+      <h3>Understand when you have a choice</h3>
+
+      <h4>Delete your unused online accounts</h4>
+      <p>Your data might get sold when a service or app shuts down. Close it if you don’t use it.</p>
+
+      <h4>View your profiles</h4>
+      <p>
+        Certain services you interact directly with let you control the information they have about you.
+        Look at any opportunity to change or control the profile built about you, if offered.
+        For example, you can tweak your profile on Google, Yahoo! or your Facebook ads preferences.
+      </p>
+
+      <h4>Control your phone’s apps permissions</h4>
+      <p>
+        Apps you install can access a lot of information about you, including details not necessarily related to the service they provide.
+        Control your privacy and location settings:
+      </p>
+      <ul>
+        <li>iOS</li>
+        <li>Android</li>
+      </ul>
+
+
+
+    </div>
+  </section>
+
+    <section id="chat" class="section section-chat">
+    <div class="content">
+
+      <h2 class="section-title">Chat</h2>
+
+      <p class="section-intro">
+        Lorem ipsum dolor sit amet.
+      </p>
+
+      <ol class="big-list">
+        <li>The first question?</li>
+        <li>A second question?</li>
+        <li>Another question comes third?</li>
+      </ol>
+
+    </div>
+  </section>
+
+</article>
+
+{% endblock %}
+

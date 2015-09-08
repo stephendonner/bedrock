@@ -367,6 +367,7 @@ INSTALLED_APPS = (
     'bedrock.research',
     'bedrock.styleguide',
     'bedrock.tabzilla',
+    'bedrock.teach',
     'bedrock.facebookapps',
     'bedrock.externalfiles',
     'bedrock.security',

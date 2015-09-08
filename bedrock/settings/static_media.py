@@ -728,6 +728,13 @@ PIPELINE_CSS = {
         ),
         'output_filename': 'css/security-tld-idn-bundle.css',
     },
+    'smarton': {
+        'source_filenames': (
+            'css/base/mozilla-share-cta.less',
+            'css/teach/smarton.less',
+        ),
+        'output_filename': 'css/smarton-bundle.css',
+    },
     'styleguide': {
         'source_filenames': (
             'css/sandstone/fonts.less',
@@ -1450,6 +1457,15 @@ PIPELINE_JS = {
             'js/privacy/privacy-day.js',
         ),
         'output_filename': 'js/privacy-day-bundle.js',
+    },
+    'smarton': {
+        'source_filenames': (
+            'js/base/mozilla-share-cta.js',
+            'js/libs/jquery.waypoints.min.js',
+            'js/libs/jquery.waypoints-sticky.min.js',
+            'js/teach/smarton.js',
+        ),
+        'output_filename': 'js/smarton-bundle.js',
     },
     'styleguide': {
         'source_filenames': (

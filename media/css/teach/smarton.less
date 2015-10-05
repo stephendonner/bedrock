@@ -33,17 +33,18 @@
     .@{color} {
         .masthead { background-color: ~'@{@{color}-dark}'; }
         .smarton-header { background-color: ~'@{@{color}}'; }
-        .big-list > li:before { background-color: ~'@{@{color}}'; }
+        .big-list .list-number .number { fill: ~'@{@{color}}'; }
+        .big-list .list-number .circle { fill: ~'@{@{color}-light}'; }
         .callout { border-color: ~'@{@{color}-light}'; color: ~'@{@{color}-dark}'; }
         .pullquote { color: ~'@{@{color}-dark}'; }
         .main .section {
             a:link, a:visited, a:hover { color: ~'@{@{color}}'; }
+            ul > li:before { color: ~'@{@{color}-dark}'; }
         }
         .footer-cta { background-color: ~'@{@{color}-dark}'; }
         .footer-cta .button { color: ~'@{@{color}}'; }
         .tip-list > li:before { color: ~'@{@{color}}'; }
-        .pullchart .number { border-color: ~'@{@{color}-light}'; }
-        .big-list .button-flat { background-color: ~'@{@{color}-light}'; color: ~'@{@{color}-dark}' !important; }
+        .chart .number { border-color: ~'@{@{color}-light}'; }
         .video iframe { border-color: ~'@{@{color}-light}'; }
     }
 }
@@ -163,6 +164,19 @@
         .open-sans;
         .font-size(20px);
     }
+
+    ul > li {
+        list-style: none;
+        padding-left: 20px;
+        margin-left: 0;
+
+        &:before {
+            content: '\25c8';
+            color: #ccc;
+            float: left;
+            margin-left: -20px;
+        }
+    }
 }
 
 a.go {
@@ -184,9 +198,11 @@ a.go {
 
 // Landing page topics
 .smarton-topics {
+    .border-box;
+    width: @widthDesktop;
     list-style: none;
-    margin: 2em 10px;
-    padding: 0 @oneColumn;
+    margin: 2em auto;
+    padding: 0 @twoColumns;
     text-align: center;
     .clearfix;
 
@@ -217,20 +233,38 @@ a.go {
 }
 
 
-.feature {
-    background: rgba(0,0,0,.1);
-    padding: 20px;
+.series-description {
+    .border-box;
+    padding: 0 @twoColumns;
+    margin: 0 auto @baseLine*2;
+    text-align: center;
+    .font-size(@largeFontSize);
+
+    h2 {
+        .font-size(36px);
+        font-style: italic;
+        font-weight: bold;
+    }
 
     .smarton-steps {
         list-style: none;
-        margin: 0;
+        width: (@gridColumnWidth * 5) + (@gridGutterWidth * 4);
+        margin: @baseLine auto;
+        .font-size(20px);
+        .flexbox;
 
         li {
             display: inline-block;
-            margin: 0;
+            margin: 0 10px;
+            width: 25%;
+            position: relative;
 
             &:after {
-                content: ' >';
+                content: '\27A1';
+                position: absolute;
+                right: -15px;
+                top: 0;
+                color: @mozIDGrey;
             }
 
             &:last-child:after {
@@ -239,6 +273,7 @@ a.go {
         }
     }
 }
+
 
 // Series header
 .masthead {
@@ -540,10 +575,8 @@ a.go {
         .graphic {
             float: left;
             margin-left: -120px;
-            border-radius: 100%;
             width: 96px;
             height: 96px;
-            background: #ddd;
         }
     }
 
@@ -560,34 +593,38 @@ a.go {
 
     > li {
         position: relative;
-        counter-increment: steps;
+//        counter-increment: steps;
         list-style-type: none;
         margin: 0 0 @baseLine*2 0;
         padding: @baseLine/2 @gridGutterWidth 0 80px;
         min-height: 60px;
         .font-size(@largeFontSize);
 
-        &:last-child {
-            border-bottom: 0;
-        }
+        // &:before {
+        //     content: counter(steps);
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     display: block;
+        //     height: 60px;
+        //     width: 60px;
+        //     margin: 0 auto;
+        //     line-height: 60px;
+        //     border-radius: 30px;
+        //     text-align: center;
+        //     background: gray;
+        //     color: #fff;
+        //     .font-size(42px);
+        //     .open-sans-light();
+        // }
+    }
 
-        &:before {
-            content: counter(steps);
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: block;
-            height: 60px;
-            width: 60px;
-            margin: 0 auto;
-            line-height: 60px;
-            border-radius: 30px;
-            text-align: center;
-            background: gray;
-            color: #fff;
-            .font-size(42px);
-            .open-sans-light();
-        }
+    .list-number {
+        width: 95px;
+        height: 64px;
+        position: absolute;
+        left: -10px;
+        top: 0;
     }
 
     .button-flat {

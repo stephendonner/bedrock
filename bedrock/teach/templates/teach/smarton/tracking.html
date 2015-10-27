@@ -6,17 +6,19 @@
 
 {% block page_title %}{{ _('Get smart on tracking') }}{% endblock %}
 {% block page_desc %}{{ _('What you do online is your business, and you can keep it that way. Get smart on tracking.') }}{% endblock %}
-{% block page_image %}{{ static('img/teach/smarton/tracking/tracking-hero-bg.svg') }}{% endblock %}
+{% block page_image %}{{ static('img/teach/smarton/tracking/tracking-hero-high-res.png') }}{% endblock %}
 {% block body_id %}smarton-tracking{% endblock %}
 {% block body_class %}smarton theme-tracking state-default{% endblock %}
 
 {% block smarton_content %}
 <article class="main">
 
-  {{ smarton_navbar(_('Tracking'), _('Get smart on tracking'), 'https://mzl.la/TODO') }}
+  {{ smarton_navbar(_('Tracking'), _('Get smart on tracking'), 'https://www.mozilla.org/teach/smarton/tracking/', 'https://mzl.la/TODO') }}
 
   <section id="ask" class="section section-ask">
     <div class="content">
+
+      <span class="smarton-hero">{{ high_res_img('teach/smarton/tracking/tracking-hero.png', {'alt': '', 'width': '380', 'height': '380'}) }}</span>
 
       <h2 class="section-title">{{ _('Ask yourself') }}</h2>
 
@@ -49,9 +51,11 @@
       </p>
 
       <figure class="video video-full">
-        <iframe width="780" height="460" src="https://episode1.donottrack-doc.com/embed/mozilla" frameborder="0" allowfullscreen>
-          <p><a href="https://donottrack-doc.com/">{{ _('Watch the documentary at donottrack-doc.com.') }}</a></p>
-        </iframe>
+        <div class="video-wrap">
+          <iframe id="video-donottrack" class="video-frame" src="https://episode1.donottrack-doc.com/embed/mozilla" frameborder="0" allowfullscreen>
+            <p><a href="https://donottrack-doc.com/">{{ _('Watch the documentary at donottrack-doc.com.') }}</a></p>
+          </iframe>
+        </div>
         <figcaption>
           <p>
             {{ _('To get a good look at how tracking works, be sure to check out the first episode of Brett Gaylor’s documentary series, <a href="{url}"><cite>Do Not Track</cite></a>.').format(url='https://donottrack-doc.com/')|safe }}
@@ -111,15 +115,18 @@
         <section>
           <h4>{{ _('What are cookies?') }}</h4>
           <p>{{ _('Cookies are small data files that websites and third parties place on your computer to remember your preferences or to track your activity, sometimes across multiple sites.') }}</p>
-          {% include 'teach/smarton/includes/scribble-sm.svg' %}
+          {% include 'teach/smarton/includes/scribble-md.svg' %}
         </section>
 
         <section class="chart">
-          <span id="chart-1" class="number">76</span><span class="percent">%</span>
-          {# L10n: This fragment follows the number '76%' #}
-          {{ _('of adults say they are “not too confident” or “not at all confident” that records of their activity maintained by the online advertisers who place ads on the websites they visit will remain private and secure.') }}
-          {# L10n: "Pew Research Center" is a proper name and shouldn't be translated #}
-          <cite><a href="https://www.pewinternet.org/2015/05/20/americans-attitudes-about-privacy-security-and-surveillance/">{{ _('(Pew Research Center, May 2015)') }}</a></cite>
+          <span id="chart-1" class="number">76</span>
+          <p>
+            <span class="number-a11y">76%</span>
+            {# L10n: This fragment follows the number '76%' #}
+            {{ _('of adults say they are “not too confident” or “not at all confident” that records of their activity maintained by the online advertisers who place ads on the websites they visit will remain private and secure.') }}
+            {# L10n: "Pew Research Center" is a proper name and shouldn't be translated #}
+            <cite><a href="https://www.pewinternet.org/2015/05/20/americans-attitudes-about-privacy-security-and-surveillance/">{{ _('(Pew Research Center, May 2015)') }}</a></cite>
+          </p>
         </section>
       </aside>
 
@@ -135,74 +142,78 @@
         {{ _('Here are some important tips, hand-picked by Mozilla experts.') }}
       </p>
 
-      <div class="topic with-image">
+      <section class="topic with-image">
         <div class="topic-intro">
           <h3>{{ _('Think deeper') }}</h3>
           <p>{{ _('A lot goes on behind the scenes of the Internet. The more you know, the better you can decide what your information is worth to you.') }}</p>
         </div>
 
-        {% include 'teach/smarton/includes/blob-fpo.svg' %}
+        <span class="topic-image">{{ high_res_img('teach/smarton/tracking/topic-think-deeper.png', {'alt': '', 'width': '300', 'height': '260'}) }}</span>
 
-        <div class="tip">
-          <h4>{{ _('Understand the hidden cost of free') }}</h4>
-          <p>
-            {{ _('We all like the appeal of “free” apps and online services but if you’re not paying for them, someone is, and what they’re buying may be the data you leave behind.') }}
-            {{ _('Decide whether the information you share is worth the service you are receiving.') }}
-          </p>
+        <div class="topic-tips">
+          <div class="tip">
+            <h4>{{ _('Understand the hidden cost of free') }}</h4>
+            <p>
+              {{ _('We all like the appeal of “free” apps and online services but if you’re not paying for them, someone is, and what they’re buying may be the data you leave behind.') }}
+              {{ _('Decide whether the information you share is worth the service you are receiving.') }}
+            </p>
+          </div>
+
+          <div class="tip">
+            <h4>{{ _('Shine a light on trackers') }}</h4>
+            <p>{{ _('If you’re a Firefox user, be sure to check out <a href="{url}">Lightbeam</a>, a simple and insightful add-on that visually graphs the depth of your browsing activity, including parts that are not usually visible to you.').format(url=url('lightbeam.lightbeam'))|safe }}</p>
+          </div>
+
+          <div class="tip">
+            <h4>{{ _('Think before you click') }}</h4>
+            <p>{{ _('When you see an element on a page, such as a “like” or social media login button, that’s an indication that some information has already been collected about you — clicking on it will share even more.') }}</p>
+          </div>
         </div>
+      </section>
 
-        <div class="tip">
-          <h4>{{ _('Shine a light on trackers') }}</h4>
-          <p>{{ _('If you’re a Firefox user, be sure to check out <a href="{url}">Lightbeam</a>, a simple and insightful add-on that visually graphs the depth of your browsing activity, including parts that are not usually visible to you.').format(url=url('lightbeam.lightbeam'))|safe }}</p>
-        </div>
-
-        <div class="tip">
-          <h4>{{ _('Think before you click') }}</h4>
-          <p>{{ _('When you see an element on a page, such as a “like” or social media login button, that’s an indication that some information has already been collected about you — clicking on it will share even more.') }}</p>
-        </div>
-      </div>
-
-      <div class="topic with-image">
+      <section class="topic with-image">
         <div class="topic-intro">
           <h3>{{ _('Choose choice') }}</h3>
           <p>{{ _('It’s easy to overlook the access to personal data that we might offer through online accounts and apps, but most offer settings that give you choice and control.') }}</p>
         </div>
 
-        {% include 'teach/smarton/includes/blob-fpo.svg' %}
+        <span class="topic-image">{{ high_res_img('teach/smarton/tracking/topic-choose-choice.png', {'alt': '', 'width': '300', 'height': '310'}) }}</span>
 
-        <div class="tip">
-          <h4>{{ _('Delete your unused accounts') }}</h4>
-          <p>
-            {{ _('Your data might get sold when a service or app shuts down.') }}
-            {{ _('If you don’t use it, close it.') }}
-          </p>
+        <div class="topic-tips">
+          <div class="tip">
+            <h4>{{ _('Delete your unused accounts') }}</h4>
+            <p>
+              {{ _('Your data might get sold when a service or app shuts down.') }}
+              {{ _('If you don’t use it, close it.') }}
+            </p>
+          </div>
+
+          <div class="tip">
+            <h4>{{ _('Protect your profiles') }}</h4>
+            <p>
+              {{ _('Some services you interact directly with let you control the information they have about you.') }}
+              {{ _('Look at any opportunity to change or control your profile, if offered.') }}
+              {% trans
+                google='https://www.google.com/ads/preferences',
+                yahoo='https://info.yahoo.com/privacy/us/yahoo/opt_out/targeting/details.html',
+                facebook='https://www.facebook.com/settings?tab=ads&amp;view',
+                acxiom='https://aboutthedata.com/' %}
+              For example, you can manage your profile and preferences for <a href="{{ google }}">Google</a>, <a href="{{ yahoo }}">Yahoo!</a> and <a href="{{ facebook }}">Facebook ads</a>, and even <a href="{{ acxiom }}">edit data that’s been collected about you by Acxiom</a>, one of the world’s largest marketing data brokers.
+              {% endtrans %}
+            </p>
+          </div>
+
+          <div class="tip">
+            <h4>{{ _('Don’t forget about apps') }}</h4>
+            <p>
+              {{ _('Some mobile apps you install can access a lot of information about you, including details not necessarily related to the service they provide.') }}
+              {{ _('Control your privacy and location settings on <a href="{ios}">iOS</a> and <a href="{android}">Android</a>.').format(ios='https://support.apple.com/HT203033', android='https://support.google.com/googleplay/answer/6014972')|safe }}
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div class="tip">
-          <h4>{{ _('Protect your profiles') }}</h4>
-          <p>
-            {{ _('Some services you interact directly with let you control the information they have about you.') }}
-            {{ _('Look at any opportunity to change or control your profile, if offered.') }}
-            {% trans
-              google='https://www.google.com/ads/preferences',
-              yahoo='https://info.yahoo.com/privacy/us/yahoo/opt_out/targeting/details.html',
-              facebook='https://www.facebook.com/settings?tab=ads&amp;view',
-              acxiom='https://aboutthedata.com/' %}
-            For example, you can manage your profile and preferences for <a href="{{ google }}">Google</a>, <a href="{{ yahoo }}">Yahoo!</a> and <a href="{{ facebook }}">Facebook ads</a>, and even <a href="{{ acxiom }}">edit data that’s been collected about you by Acxiom</a>, one of the world’s largest marketing data brokers.
-            {% endtrans %}
-          </p>
-        </div>
-
-        <div class="tip">
-          <h4>{{ _('Don’t forget about apps') }}</h4>
-          <p>
-            {{ _('Some mobile apps you install can access a lot of information about you, including details not necessarily related to the service they provide.') }}
-            {{ _('Control your privacy and location settings on <a href="{ios}">iOS</a> and <a href="{android}">Android</a>.').format(ios='https://support.apple.com/HT203033', android='https://support.google.com/googleplay/answer/6014972')|safe }}
-          </p>
-        </div>
-      </div>
-
-      <div class="topic with-image">
+      <section class="topic with-image">
         <div class="topic-intro">
           <h3>{{ _('Look to your browser') }}</h3>
           <p>
@@ -210,11 +221,97 @@
             {{ _('Here are a few key ones that you can make use of.') }}</p>
         </div>
 
-        {% include 'teach/smarton/includes/blob-fpo.svg' %}
+        <span class="topic-image">{{ high_res_img('teach/smarton/tracking/topic-browser.png', {'alt': '', 'width': '300', 'height': '260'}) }}</span>
+
+        <div class="topic-tips">
+          <div class="tip">
+            <h4>{{ _('Do Not Track') }}</h4>
+            <p>
+              {{ _('With this feature enabled, your browser will tell social sharing services, publishers, analytics providers, advertisers and third party networks that you want to opt-out of tracking.') }}
+            </p>
+
+            <p>
+              {{ _('Mozilla was the first company to include a Do Not Track feature when it was added to Firefox in 2011.') }}
+              {{ _('Since then, it has been adopted by most major browsers, though many companies on the receiving end of the requests are still not honoring them.') }}
+              {{ _('Efforts are being made by Web advocacy groups to have this changed.') }}
+            </p>
+
+            <p>
+            {% trans
+              firefox='https://support.mozilla.org/kb/how-do-i-turn-do-not-track-feature',
+              chrome='https://support.google.com/chrome/answer/2392969',
+              ie='http://windows.microsoft.com/en-us/internet-explorer/ie-do-not-track',
+              egde='http://windows.microsoft.com/en-US/windows-10/edge-privacy-faq',
+              safari='https://support.apple.com/kb/PH19219' %}
+              Learn how to enable Do Not Track in <a href="{{ firefox }}">Firefox</a>, <a href="{{ chrome }}">Chrome</a>, <a href="{{ ie }}">Internet Explorer</a>/<a href="{{ edge }}">Edge</a> and <a href="{{ safari }}">Safari</a>.
+            {% endtrans %}
+            </p>
+          </div>
+
+          <div class="tip">
+            <h4>{{ _('Private Browsing') }}</h4>
+            <p>
+              {{ _('Use Private Browsing to keep from having certain items about your browsing activity locally saved.') }}
+              {{ _('These include your history, searches and cookies.') }}
+            </p>
+
+            <p>{{ _('Here is how to use private browsing:') }}</p>
+
+            <div class="columns columns-2">
+              <div class="col">
+                <h5>{{ _('Desktop') }}</h5>
+                <ul>
+                  <li><a href="https://support.mozilla.org/kb/tracking-protection-firefox">Firefox</a></li>
+                  <li><a href="https://support.google.com/chrome/answer/95464">Chrome</a></li>
+                  <li><a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie-9/features/in-private">Internet Explorer</a>/<a href="http://windows.microsoft.com/en-hk/windows-10/browse-inprivate-in-microsoft-edge">Edge</a></li>
+                  <li><a href="https://support.apple.com/kb/PH19216">Safari</a></li>
+                </ul>
+              </div>
+
+              <div class="col">
+                <h5>{{ _('Smartphone') }}</h5>
+                <ul>
+                  <li><a href="https://support.mozilla.org/kb/firefox-android-tracking-protection">{{ _('Firefox for Android') }}</a></li>
+                  <li><a href="https://support.google.com/chrome/answer/95464">Chrome</a></li>
+                  <li><a href="https://support.apple.com/HT203036">Safari</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip">
+            <h4>{{ _('Additional privacy settings') }}</h4>
+            <p>{{ _('Many browsers offer a range of privacy settings that will help you stay in control. Explore them here:') }}</p>
+
+            <div class="columns columns-2">
+              <div class="col">
+                <h5>{{ _('Desktop') }}</h5>
+                <ul>
+                  <li><a href="https://support.mozilla.org/products/firefox/protect-your-privacy">Firefox</a></li>
+                  <li><a href="https://support.google.com/chrome/answer/114836">Chrome</a></li>
+                  <li><a href="http://www.microsoft.com/security/online-privacy/ie.aspx">Internet Explorer</a>/<a href="http://windows.microsoft.com/en-US/windows-10/edge-privacy-faq">Edge</a></li>
+                  <li><a href="https://support.apple.com/kb/PH19250">Safari</a></li>
+                </ul>
+              </div>
+
+              <div class="col">
+                <h5>{{ _('Smartphone') }}</h5>
+                <ul>
+                  <li><a href="https://support.mozilla.org/products/mobile/protect-your-privacy-firefox-android">{{ _('Firefox for Android') }}</a></li>
+                  <li><a href="https://support.google.com/chrome/answer/2392969">Chrome</a></li>
+                  <li><a href="https://support.apple.com/HT201265">Safari</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <aside class="fx-callout">
-          <h4>{{ _('Did you know?') }}</h4>
-          <p>{{ _('Firefox is filled with features designed to give you even more control over your personal information.') }}</p>
+          <div class="intro">
+            <h4>{{ _('Did you know?') }}</h4>
+            <p>{{ _('Firefox is filled with features designed to give you even more control over your personal information.') }}</p>
+            {% include 'teach/smarton/includes/scribble-xsm.svg' %}
+          </div>
 
           <section class="feature feature-private">
             <h5>{{ _('Private Browsing with Tracking Protection') }}</h5>
@@ -235,87 +332,7 @@
           </section>
         </aside>
 
-        <div class="tip">
-          <h4>{{ _('Do Not Track') }}</h4>
-          <p>
-            {{ _('With this feature enabled, your browser will tell social sharing services, publishers, analytics providers, advertisers and third party networks that you want to opt-out of tracking.') }}
-          </p>
-
-          <p>
-            {{ _('Mozilla was the first company to include a Do Not Track feature when it was added to Firefox in 2011.') }}
-            {{ _('Since then, it has been adopted by most major browsers, though many companies on the receiving end of the requests are still not honoring them.') }}
-            {{ _('Efforts are being made by Web advocacy groups to have this changed.') }}
-          </p>
-
-          <p>
-          {% trans
-            firefox='https://support.mozilla.org/kb/how-do-i-turn-do-not-track-feature',
-            chrome='https://support.google.com/chrome/answer/2392969',
-            ie='http://windows.microsoft.com/en-us/internet-explorer/ie-do-not-track',
-            egde='http://windows.microsoft.com/en-US/windows-10/edge-privacy-faq',
-            safari='https://support.apple.com/kb/PH19219' %}
-            Learn how to enable Do Not Track in <a href="{{ firefox }}">Firefox</a>, <a href="{{ chrome }}">Chrome</a>, <a href="{{ ie }}">Internet Explorer</a>/<a href="{{ edge }}">Edge</a> and <a href="{{ safari }}">Safari</a>.
-          {% endtrans %}
-          </p>
-        </div>
-
-        <div class="tip">
-          <h4>{{ _('Private Browsing') }}</h4>
-          <p>
-            {{ _('Use Private Browsing to keep from having certain items about your browsing activity locally saved.') }}
-            {{ _('These include your history, searches and cookies.') }}
-          </p>
-
-          <p>{{ _('Here is how to use private browsing:') }}</p>
-
-          <div class="columns columns-2">
-            <div class="col">
-              <h5>{{ _('Desktop') }}</h5>
-              <ul>
-                <li><a href="https://support.mozilla.org/kb/tracking-protection-firefox">Firefox</a></li>
-                <li><a href="https://support.google.com/chrome/answer/95464">Chrome</a></li>
-                <li><a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie-9/features/in-private">Internet Explorer</a>/<a href="http://windows.microsoft.com/en-hk/windows-10/browse-inprivate-in-microsoft-edge">Edge</a></li>
-                <li><a href="https://support.apple.com/kb/PH19216">Safari</a></li>
-              </ul>
-            </div>
-
-            <div class="col">
-              <h5>{{ _('Smartphone') }}</h5>
-              <ul>
-                <li><a href="https://support.mozilla.org/kb/firefox-android-tracking-protection">{{ _('Firefox for Android') }}</a></li>
-                <li><a href="https://support.google.com/chrome/answer/95464">Chrome</a></li>
-                <li><a href="https://support.apple.com/HT203036">Safari</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="tip">
-          <h4>{{ _('Additional privacy settings') }}</h4>
-          <p>{{ _('Many browsers offer a range of privacy settings that will help you stay in control. Explore them here:') }}</p>
-
-          <div class="columns columns-2">
-            <div class="col">
-              <h5>{{ _('Desktop') }}</h5>
-              <ul>
-                <li><a href="https://support.mozilla.org/products/firefox/protect-your-privacy">Firefox</a></li>
-                <li><a href="https://support.google.com/chrome/answer/114836">Chrome</a></li>
-                <li><a href="http://www.microsoft.com/security/online-privacy/ie.aspx">Internet Explorer</a>/<a href="http://windows.microsoft.com/en-US/windows-10/edge-privacy-faq">Edge</a></li>
-                <li><a href="https://support.apple.com/kb/PH19250">Safari</a></li>
-              </ul>
-            </div>
-
-            <div class="col">
-              <h5>{{ _('Smartphone') }}</h5>
-              <ul>
-                <li><a href="https://support.mozilla.org/products/mobile/protect-your-privacy-firefox-android">{{ _('Firefox for Android') }}</a></li>
-                <li><a href="https://support.google.com/chrome/answer/2392969">Chrome</a></li>
-                <li><a href="https://support.apple.com/HT201265">Safari</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
 
     </div>
   </section>
@@ -333,21 +350,27 @@
           <li>
             <p>
               {{ _('What privacy settings do you use in your browser?') }}
-              <a class="tweet-this" href="{{ 'https://www.twitter.com/intent/tweet?url=%s&amp;text=%s'|format('https://mzl.la/#TODO'|urlencode, _('What privacy settings do you use in your browser?')|urlencode)|e }}">{{ _('Tweet this') }}</a>
+              <span class="tweet-this">
+                <a class="button-tweet" href="{{ 'https://www.twitter.com/intent/tweet?url=%s&amp;text=%s%s'|format('https://mzl.la/#TODO'|urlencode, _('What privacy settings do you use in your browser?')|urlencode, ' #SmartOn'|urlencode)|e }}">{{ _('Tweet this') }}</a>
+              </span>
             </p>
             {% include 'teach/smarton/includes/list-number-1.svg' %}
           </li>
           <li>
             <p>
               {{ _('How much are you willing to share about yourself in exchange for personalized content?') }}
-              <a class="tweet-this" href="{{ 'https://www.twitter.com/intent/tweet?url=%s&amp;text=%s'|format('https://mzl.la/#TODO'|urlencode, _('How much are you willing to share about yourself in exchange for personalized content?')|urlencode)|e }}">{{ _('Tweet this') }}</a>
+              <span class="tweet-this">
+                <a class="button-tweet" href="{{ 'https://www.twitter.com/intent/tweet?url=%s&amp;text=%s%s'|format('https://mzl.la/#TODO'|urlencode, _('How much are you willing to share about yourself in exchange for personalized content?')|urlencode, ' #SmartOn'|urlencode)|e }}">{{ _('Tweet this') }}</a>
+              </span>
             </p>
             {% include 'teach/smarton/includes/list-number-2.svg' %}
           </li>
           <li>
             <p>
               {{ _('Have you ever used private browsing?') }}
-              <a class="tweet-this" href="{{ 'https://www.twitter.com/intent/tweet?url=%s&amp;text=%s'|format('https://mzl.la/#TODO'|urlencode, _('Have you ever used private browsing?')|urlencode)|e }}">{{ _('Tweet this') }}</a>
+              <span class="tweet-this">
+                <a class="button-tweet" href="{{ 'https://www.twitter.com/intent/tweet?url=%s&amp;text=%s%s'|format('https://mzl.la/#TODO'|urlencode, _('Have you ever used private browsing?')|urlencode, ' #SmartOn'|urlencode)|e }}">{{ _('Tweet this') }}</a>
+              </span>
             </p>
             {% include 'teach/smarton/includes/list-number-3.svg' %}
           </li>
@@ -360,7 +383,7 @@
           <section>
             <p>{{ _('Are you a teacher? Give your students <a href="{url}">a simple lesson on tracking</a>.').format(url='https://teach.mozilla.org/activities/')|safe }}</p>
           </section>
-          {% include 'teach/smarton/includes/scribble-sm.svg' %}
+          {% include 'teach/smarton/includes/scribble-md.svg' %}
         </aside>
 
     </div>

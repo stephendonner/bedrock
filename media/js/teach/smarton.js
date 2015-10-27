@@ -100,6 +100,7 @@ if (typeof window.Mozilla === 'undefined') {
     });
 
     var buttonClose = '<button type="button" class="close" title="'+ window.trans('global-close') +'">'+ window.trans('global-close') +'</button>';
+    var footerDetails = $('.footer-cta #form-details, .footer-cta .form-details');
 
     function initStickyFooter() {
         if (tallMode) {
@@ -142,8 +143,8 @@ if (typeof window.Mozilla === 'undefined') {
                 $footer.removeClass('fixed').removeAttr('style').find('.close').remove();
             }
 
-            if ($('.footer-cta .form-details:visible').length > 0) {
-                $('.footer-cta .form-details').slideUp();
+            if (footerDetails.is(':visible')) {
+                footerDetails.slideUp('fast');
             }
 
             $body.addClass('footer-closed');
@@ -180,7 +181,7 @@ if (typeof window.Mozilla === 'undefined') {
           value:               circleVal,
           radius:              70,
           maxValue:            100,
-          width:               10,
+          width:               12,
           text:                function(value){return value + '%';},
           duration:            850,
           wrpClass:            'circles-wrap',
@@ -219,6 +220,31 @@ if (typeof window.Mozilla === 'undefined') {
             offset: '100%'
         });
     });
+
+/*
+    var fullVideoWrap = $('.video-full .video-wrap');
+    var fullVideoOverlay = $('<div class="video-play"></div>');
+
+    function fullVideoExpand() {
+        fullVideoOverlay.insertAfter(fullVideoWrap);
+        fullVideoOverlay.on('click', function(){
+            $(this).parents('.video-full').animate({ width: '100%' }).append(buttonClose);
+            $(this).remove();
+            fullVideoContract();
+        });
+    }
+
+    function fullVideoContract() {
+        $('.video-full .close').on('click', function(){
+            $('.video-full').removeAttr('style');
+            $(this).remove();
+        });
+    }
+
+    if (fullVideoWrap.length > 0) {
+        fullVideoExpand();
+    }
+*/
 
 })(window.jQuery);
 

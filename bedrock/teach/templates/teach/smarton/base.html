@@ -58,7 +58,7 @@
   {% javascript 'smarton' %}
 {% endblock %}
 
-{% macro smarton_navbar(title='', share_text='', share_url='') -%}
+{% macro smarton_navbar(title='', share_text='', share_url='', share_url_short='') -%}
 <header class="smarton-header">
   <div class="content">
     <div class="series-title">{{ _('SmartOn') }}</div>
@@ -66,7 +66,7 @@
     <h1 class="smarton-title">{{ title }}</h1>
   {%- endif -%}
 
-    {% set share_urls = { 'twitter': share_url, 'googleplus': share_url, 'facebook': share_url } -%}
+    {% set share_urls = { 'twitter': share_url_short, 'googleplus': share_url, 'facebook': share_url } -%}
     {% set cta_text = _('Share') %}
     {{ share_cta(cta_text, share_urls, share_text, 'head-share', 'mini') }}
 

@@ -19,6 +19,32 @@ main > header {
     }
 }
 
+@media only screen and (min-width: @breakDesktop) {
+    html[lang^='es'] {
+        main > header h1 {
+            .font-size(64px);
+        }
+    }
+
+    html[lang^='de'] {
+        main > header h1 {
+            .font-size(53px);
+        }
+    }
+
+    html[lang^='pl'] {
+        main > header h1 {
+            .font-size(54px);
+        }
+    }
+
+    html[lang^='it'] {
+        main > header h1 {
+            .font-size(52px);
+        }
+    }
+}
+
 /*-------------------------------------------------------------------------*/
 // Try private browsing CTA panel.
 
@@ -153,7 +179,6 @@ main > header {
         .font-size(18px);
         color: #005189;
         line-height: 1.3;
-
     }
 
     p {
